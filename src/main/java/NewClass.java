@@ -7,6 +7,14 @@
  *
  * @author keso9013
  */
-public class NewClass {
-    
+public class Mastermind {
+
+    private ArrayList<String[]> colourSoloutions;
+
+    public Mastermind(String colours, int positions)
+    {
+        solutions = new ArrayList<>();
+        generateSolutions(colours, new String(positions), 0);
+        playGane();
+    }
 }
