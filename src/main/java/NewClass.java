@@ -36,4 +36,11 @@ public class Mastermind {
             }
         System.out.println("Game over! The hidden code was: " + secretCode);
     }
+
+
+
+    //promt user guess
+    Scanner scan = new scanner(System.in)
+    System.out.println("Enter a guess!");
+    String userGuess = scan.nextLine();
 }
