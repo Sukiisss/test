@@ -8,39 +8,19 @@
  * @author keso9013
  */
 public class Mastermind {
-    private String playerName;
-    private String secretCode;
-    private static end int codeLength = 4;
-    private static end int maxAttempts = 10;
-    private int attpemtsLeft;
+    String [] colours = {Red, Orange, yellow, Green, Blue};
 
-    public game(String playerName)
-    {
-        this.playerName = playerName;
-    }
-
-    public void start()
-    {
-        generateSecretCode();
-        attemptsLeft = maxAttempts;
-        System.out.println("Hello, " + playerName + "! Try to guess the hidden code!");
-        System.out.println("You will have " + maxAttempts + " attempts.");
-
-        Scanner scan = new scanner(System.in);
-
-        while(attemptsLeft > 0)
-            {
-                System.out.println("Enter a guess (4 colours separated by spaces): ");
-                String userGuess = scan.nextLine();
-                evaluateGuess(userGuess);
-            }
-        System.out.println("Game over! The hidden code was: " + secretCode);
-    }
-
-
-
-    //promt user guess
     Scanner scan = new scanner(System.in)
-    System.out.println("Enter a guess!");
-    String userGuess = scan.nextLine();
+    System.out.println("Make a guess");
+
+    int count = 0;
+    for (int i = 0; i < colours.length; i++)
+        {
+            if (colours[i] == number)
+            {
+                count++;
+            }
+        }
+    System.out.println("That colour appears " + count + " times.");
+     
 }
