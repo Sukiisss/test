@@ -22,5 +22,26 @@ public class Mastermind {
             }
         }
     System.out.println("That colour appears " + count + " times.");
-     
+}
+
+
+public class Mastermind {
+
+    String[] colours = {"Red", "Orange", "Yellow", "Green", "Blue"};
+    String[] secretCode = new String[4];
+
+    Scanner scan = new Scanner(System.in);
+
+    public Mastermind() {
+        generateSecretCode();
+        playGame();
+    }
+}
+
+public void generateSecretCode() {
+    Random random = new Random();
+    for (int i = 0; i < secretCode.length; i++) {
+        int randomLine = random.nextInt(colours.length);
+        secretCode[i] = colours[randomIndext];
+    }
 }
