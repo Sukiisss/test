@@ -7,29 +7,20 @@
  *
  * @author keso9013
  */
-public class Mastermind {
-    String [] colours = {Red, Orange, yellow, Green, Blue};
-
-    Scanner scan = new scanner(System.in)
-    System.out.println("Make a guess");
-
-    int count = 0;
-    for (int i = 0; i < colours.length; i++)
-        {
-            if (colours[i] == number)
-            {
-                count++;
-            }
-        }
-    System.out.println("That colour appears " + count + " times.");
-}
-
+import java.util.Random;
 
 public class Mastermind {
     public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        Random random = new Random();
+        
         String[] colours = {"Red", "Orange", "Yellow", "Green", "Blue"};
 
-    Scanner scan = new Scanner(System.in);
+        String[] secretCode = new String[4];
+        for (int i = 0; i < 4; i++) {
+            secretCode[i] = colours[random.nextInt(colours.length)];
+        }
+        
     System.out.println("Enter your guess (four colours separated by spaces):");
     String guess = scan.nextLine();
 
