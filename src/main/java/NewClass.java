@@ -7,7 +7,6 @@
  *
  * @author keso9013
  */
-import java.util.Random;
 
 public class Mastermind {
     public static void main(String[] args) {
@@ -20,15 +19,19 @@ public class Mastermind {
         
         for (int i = 0; i < secretCode.length; i++) {
             int randomColours = random.nextInt(colours.length);
-            secretCode[i] = colours[randomColours];
+            secretCode[i] = colours[randomColours].toLowerCase();
         }
-    }
-        
-    System.out.println("Enter your guess (four colours separated by spaces):");
+    
+    System.out.println("Welcome to Mastermind!");
+    System.out.println("----------------------------------------------------------------------------------------------------------");
+    System.out.println("Rules:\nYour goal is to guess the right sequence of colours in the correct position. You will be given ");
+    System.out.println("Enter your guess (four colours separated by spaces):"); 
+    System.out.println("----------------------------------------------------------------------------------------------------------");
+    System.out.println("Enter your guess: ");
     String[] guess = new String[4];
 
     for (int i = 0; i < guess.length; i++) {
-        guess[i] = scan.nextLine();
+        guess[i] = scan.nextLine().toLowerCase();
     }
         
     int correctPositions = 0;
@@ -36,5 +39,7 @@ public class Mastermind {
         if (guess[i].equals(secretCode[i])) {
             correctPositions++;
         }
+      }
+    System.out.println("Number of correct positions: " + correctPositions);
     }
-}
+  }
