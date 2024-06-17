@@ -31,25 +31,56 @@ public class Mastermind {
     System.out.println("Enter your guess: ");
    
         int maxAttempts = 10;
-        boolean codeGuessed = false;
+        boolean secretCodeGuessed = false;
 
         for (int attempt = 1; attempt <= maxAttemtps; attempt++) {
            system.out.println("Attempt: " + attempt + "Enter fours colours: "); 
            String[] guess = new String[4];
 
-            for (int i = 0; i < guess.length; i++) {
+            for (int i = 0; i < guess.length(); i++) {
                 guess[i] = scan.nextLine().toLowerCase();
             }
         }
         
     int correctPositions = 0;
-    int correctColoursWrongPosition = 0;
-        
-    for (int i = 0; i < secretCode.length; i++) {
-        if (guess[i].equals(secretCode[i])) {
+    int correctColourWrongPosition = 0;
+
+    //check for correct colour
+    for (int i = 0; i < secretCode.length(); i++) {
+        if (guess[i].equals(secretCode[i])) { 
             correctPositions++;
+            guess[i] = ""; //this colour position is matched correctly and shouldn't be checked for the second pass.
+            secretCode = ""; //this colour position is matched correctly and shouldn't be checked for the second pass.
         }
       }
-    System.out.println("Number of correct positions: " + correctPositions);
+
+    //check for correct colours in correct positions
+        for (int i = 0; i = secretCode.length(); i++) {
+            if (secretCode[i] != ("")) { //only check the colours that aren't correct. 
+                for ( int j = 0; guess.length(); j++) {
+                    if (guess[j].equals("") && secretCode[i].equals(guess[i])) {
+                        correctColourWrongPosition++;
+                        guess[i] = ""; //this colour is now in the correct position and should not be checked again.
+                        break;
+                    }
+                }
+            }
+        }
+        System.out.println("Number of correct positions: " + correctPositions);
+        System.out.println("Number of correct colours but in wrong positions: " + correctColourWrongPosition);
+
+        if (correctPositions == 4 && correctColours == 4) {
+            boolean secretCodeGuessed = true;
+            break;
+        }
     }
-  }
+
+    if (secretCodeGuessed) {
+    System.out.println("WINNER! You guessed the secret code.");
+}
+
+else {
+    System.out.println("LOSER! You'ved used up all of your attempts.\nThe secret code was: " + secretCode);
+}
+    
+  
