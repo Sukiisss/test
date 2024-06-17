@@ -15,8 +15,9 @@ public class Mastermind {
         
         String[] colours = {"Red", "Orange", "Yellow", "Green", "Blue"};
 
-        String[] secretCode = new String[4];
-        
+        String[] secretCode = new String[4]; //the secret code should be four colours long
+
+        //Generating the secret code
         for (int i = 0; i < secretCode.length; i++) {
             int randomColours = random.nextInt(colours.length);
             secretCode[i] = colours[randomColours].toLowerCase();
@@ -28,13 +29,22 @@ public class Mastermind {
     System.out.println("Enter your guess (four colours separated by spaces):"); 
     System.out.println("----------------------------------------------------------------------------------------------------------");
     System.out.println("Enter your guess: ");
-    String[] guess = new String[4];
+   
+        int maxAttempts = 10;
+        boolean codeGuessed = false;
 
-    for (int i = 0; i < guess.length; i++) {
-        guess[i] = scan.nextLine().toLowerCase();
-    }
+        for (int attempt = 1; attempt <= maxAttemtps; attempt++) {
+           system.out.println("Attempt: " + attempt + "Enter fours colours: "); 
+           String[] guess = new String[4];
+
+            for (int i = 0; i < guess.length; i++) {
+                guess[i] = scan.nextLine().toLowerCase();
+            }
+        }
         
     int correctPositions = 0;
+    int correctColoursWrongPosition = 0;
+        
     for (int i = 0; i < secretCode.length; i++) {
         if (guess[i].equals(secretCode[i])) {
             correctPositions++;
