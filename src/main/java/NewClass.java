@@ -22,19 +22,20 @@ public class Mastermind {
             int randomColours = random.nextInt(colours.length);
             secretCode[i] = colours[randomColours].toLowerCase();
         }
-    
-    System.out.println("Welcome to Mastermind!");
-    System.out.println("----------------------------------------------------------------------------------------------------------");
-    System.out.println("Rules:\nYour goal is to guess the right sequence of colours in the correct position. You will be given ");
-    System.out.println("Enter your guess (four colours separated by spaces):"); 
-    System.out.println("----------------------------------------------------------------------------------------------------------");
-    System.out.println("Enter your guess: ");
+
+        //intro and rules
+        System.out.println("Welcome to Mastermind!");
+        System.out.println("----------------------------------------------------------------------------------------------------------");
+        System.out.println("Rules:\nYour goal is to guess the right sequence of colours in the correct position. You will be given ");
+        System.out.println("Enter your guess (four colours separated by spaces):"); 
+        System.out.println("----------------------------------------------------------------------------------------------------------");
+        System.out.println("Enter your guess: ");
    
         int maxAttempts = 10;
         boolean secretCodeGuessed = false;
 
         for (int attempt = 1; attempt <= maxAttemtps; attempt++) {
-           system.out.println("Attempt: " + attempt + "Enter fours colours: "); 
+           System.out.println("Attempt: " + attempt + "Enter fours colours: "); 
            String[] guess = new String[4];
 
             for (int i = 0; i < guess.length(); i++) {
@@ -45,22 +46,25 @@ public class Mastermind {
     int correctPositions = 0;
     int correctColourWrongPosition = 0;
 
-    //check for correct colour
-    for (int i = 0; i < secretCode.length(); i++) {
-        if (guess[i].equals(secretCode[i])) { 
-            correctPositions++;
-            guess[i] = ""; //this colour position is matched correctly and shouldn't be checked for the second pass.
-            secretCode = ""; //this colour position is matched correctly and shouldn't be checked for the second pass.
-        }
+    boolean[] matchedCode = new boolean[secretCode.length()];
+    boolean[] matchedGuess = new boolean[guess.length()];
+        
+        //check for correct colour
+        for (int i = 0; i < secretCode.length(); i++) {
+            if (guess[i].equals(secretCode[i])) { 
+                correctPositions++;
+                matchedCode[i] = true;
+                matchedGuess[i] = true;
+            }
       }
 
     //check for correct colours in correct positions
         for (int i = 0; i = secretCode.length(); i++) {
-            if (secretCode[i] != ("")) { //only check the colours that aren't correct. 
-                for ( int j = 0; guess.length(); j++) {
-                    if (guess[j].equals("") && secretCode[i].equals(guess[i])) {
+            if (!matchedCode[i]) { //only check the colours that aren't correct. 
+                for (int j = 0; guess.length(); j++) {
+                    if (!matchedGuess[j] && secretCode[i].equals(guess[j])) {
                         correctColourWrongPosition++;
-                        guess[i] = ""; //this colour is now in the correct position and should not be checked again.
+                        matchedGuess = true; //this colour is now in the correct position and should not be checked again.
                         break;
                     }
                 }
@@ -69,7 +73,7 @@ public class Mastermind {
         System.out.println("Number of correct positions: " + correctPositions);
         System.out.println("Number of correct colours but in wrong positions: " + correctColourWrongPosition);
 
-        if (correctPositions == 4 && correctColours == 4) {
+        if (correctPositions == 4) {
             boolean secretCodeGuessed = true;
             break;
         }
@@ -80,7 +84,11 @@ public class Mastermind {
 }
 
 else {
-    System.out.println("LOSER! You'ved used up all of your attempts.\nThe secret code was: " + secretCode);
-}
+    System.out.println("LOSER! You'ved used up all of your attempts.\nThe secret code was: ");
+    for (int i = 0; i < secretCode.length(); i ++) {
+        System.out.println(secretCode[i]);
+    }
+  }
+
     
   
