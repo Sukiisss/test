@@ -7,6 +7,9 @@
  *
  * @author keso9013
  */
+package com.mycompany.mavenproject1;
+import java.util.Scanner;
+import java.util.Random;
 
 public class Mastermind {
     public static void main(String[] args) {
@@ -34,23 +37,22 @@ public class Mastermind {
         int maxAttempts = 10;
         boolean secretCodeGuessed = false;
 
-        for (int attempt = 1; attempt <= maxAttemtps; attempt++) {
-           System.out.println("Attempt: " + attempt + "Enter fours colours: "); 
+        for (int attempt = 1; attempt <= maxAttempts; attempt++) {
+           System.out.println("Attempt " + attempt + ": Enter fours colours from: red, orange, yellow, green, blue. "); 
            String[] guess = new String[4];
 
-            for (int i = 0; i < guess.length(); i++) {
+            for (int i = 0; i < guess.length; i++) {
                 guess[i] = scan.nextLine().toLowerCase();
             }
-        }
-        
+         
     int correctPositions = 0;
     int correctColourWrongPosition = 0;
 
-    boolean[] matchedCode = new boolean[secretCode.length()];
-    boolean[] matchedGuess = new boolean[guess.length()];
+    boolean[] matchedCode = new boolean[secretCode.length];
+    boolean[] matchedGuess = new boolean[guess.length];
         
         //check for correct colour
-        for (int i = 0; i < secretCode.length(); i++) {
+        for (int i = 0; i < secretCode.length; i++) {
             if (guess[i].equals(secretCode[i])) { 
                 correctPositions++;
                 matchedCode[i] = true;
@@ -59,12 +61,12 @@ public class Mastermind {
       }
 
     //check for correct colours in correct positions
-        for (int i = 0; i = secretCode.length(); i++) {
+        for (int i = 0; i < secretCode.length; i++) {
             if (!matchedCode[i]) { //only check the colours that aren't correct. 
-                for (int j = 0; guess.length(); j++) {
+                for (int j = 0; j < guess.length; j++) {
                     if (!matchedGuess[j] && secretCode[i].equals(guess[j])) {
                         correctColourWrongPosition++;
-                        matchedGuess = true; //this colour is now in the correct position and should not be checked again.
+                        matchedGuess[i] = true; 
                         break;
                     }
                 }
@@ -74,21 +76,21 @@ public class Mastermind {
         System.out.println("Number of correct colours but in wrong positions: " + correctColourWrongPosition);
 
         if (correctPositions == 4) {
-            boolean secretCodeGuessed = true;
+            secretCodeGuessed = true;
             break;
         }
     }
+    
 
-    if (secretCodeGuessed) {
-    System.out.println("WINNER! You guessed the secret code.");
-}
+        if (secretCodeGuessed) {
+            System.out.println("WINNER! You guessed the secret code.");
+        }
 
-else {
-    System.out.println("LOSER! You'ved used up all of your attempts.\nThe secret code was: ");
-    for (int i = 0; i < secretCode.length(); i ++) {
-        System.out.println(secretCode[i]);
+        else {
+            System.out.println("LOSER! You'ved used up all of your attempts.\nThe secret code was: ");
+            for (int i = 0; i < secretCode.length; i ++) {
+            System.out.println(secretCode[i]);
+        }
+      }
     }
   }
-
-    
-  
