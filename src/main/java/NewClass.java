@@ -20,7 +20,7 @@ public class Mastermind {
 
         String[] secretCode = new String[4]; //the secret code should be four colours long
 
-        //Generating the secret code
+        //Generating the secret code from array
         for (int i = 0; i < secretCode.length; i++) {
             int randomColours = random.nextInt(colours.length);
             secretCode[i] = colours[randomColours].toLowerCase();
@@ -29,16 +29,17 @@ public class Mastermind {
         //intro and rules
         System.out.println("Welcome to Mastermind!");
         System.out.println("----------------------------------------------------------------------------------------------------------");
-        System.out.println("Rules:\nYour goal is to guess the right sequence of colours in the correct position. You will be given ");
-        System.out.println("Enter your guess (four colours separated by spaces):"); 
+        System.out.println("Rules:\n1) Your goal is to crack the secret code of the right sequence of colours in the correct position.\n2) The secret code can INCLUDING DUPLICATE colours!");
+        System.out.println("3) You will be given five colours to guess with a maximum of 10 attempts. Your guess will be four colours long.\n4) To enter your guess, you must type each colour on a seperate line and spell the colours correctly or else that guess won't be checked or counted properly.");
+        System.out.println("5) You are not allowed to go back to a typed colour once on the previous new line, so be carful!\n Have fun!");
         System.out.println("----------------------------------------------------------------------------------------------------------");
-        System.out.println("Enter your guess: ");
+     
    
-        int maxAttempts = 10;
+        int maxAttempts = 10; 
         boolean secretCodeGuessed = false;
 
         for (int attempt = 1; attempt <= maxAttempts; attempt++) {
-           System.out.println("Attempt " + attempt + ": Enter fours colours from: red, orange, yellow, green, blue. "); 
+           System.out.println("Attempt " + attempt + ": Enter fours colours from: red, orange, yellow, green, blue. ");
            String[] guess = new String[4];
 
             for (int i = 0; i < guess.length; i++) {
@@ -74,6 +75,7 @@ public class Mastermind {
         }
         System.out.println("Number of correct positions: " + correctPositions);
         System.out.println("Number of correct colours but in wrong positions: " + correctColourWrongPosition);
+        System.out.println("----------------------------------------------------------------------------------------------------------");
 
         if (correctPositions == 4) {
             secretCodeGuessed = true;
